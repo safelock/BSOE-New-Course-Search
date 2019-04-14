@@ -2,9 +2,59 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>BSOE New Course Search</title>
+    <link rel="stylesheet" href="src/css/style.css">
   </head>
   <body>
+    <header>
+      <h1>BSOE New Course Search</h1>
+    </header>
 
+    <div class="msg">
+      <p>
+        Starting Fall 2019, many BSOE Courses will have changed course numbers
+        and codes. The content of courses will not be changing, with the
+        exception of the new introductory Computer Science & Engineering (CSE)
+        programming sequence. This website is to help fellow slugs quickly find
+        new courses without having to comb through
+        <a href="https://undergrad.soe.ucsc.edu/bsoe-course-renumbering"
+        target="_blank">
+          this</a>.
+        This is still a work in progress so if you notice anything wrong
+        or weird happening, please contact
+        <a href="mailto:gnevange@ucsc.edu">me</a> or if you're familiar with
+        github, click <a href="#" target="_blank">here</a>.
+        <strong>This website is not affiliated with UC Santa Cruz or any
+          of its family of sites.</strong>
+      </p>
+    </div>
+
+    <section class="container">
+      <form id="my-form">
+        <div>
+          <input type="text" id="course" placeholder="Old Course">
+        </div>
+        <input class="btn" type="submit" value="Convert">
+        <div class="new-course">
+          <h1>New Course</h1>
+          <h3>Description</h3>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+    		<ul class="icons">
+    			<li><a href="https://www.linkedin.com/in/gico/"
+            class="icon alt fa-linkedin" target="_blank">
+            <span class="label">LinkedIn</span></a></li>
+    			<li><a href="https://github.com/RiceAbove" class="icon alt fa-github"
+            target="_blank"><span class="label">GitHub</span></a></li>
+    		</ul>
+    		<ul class="copyright">
+    			<li>&copy; 2019, Gico Carlo Evangelista</li>
+    		</ul>
+    </footer>
   </body>
 </html>
