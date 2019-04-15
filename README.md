@@ -1,4 +1,4 @@
-# BSOE New Course Search
+# [BSOE New Course Search](https://gicocarlo.me/BSOE-New-Course-Search/)
 
 ##  ✅ Todo Checklist
 - [x] Design the front end site
