@@ -2,9 +2,16 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-'''
-Created by: Gico Carlo Evangelista (RiceAbove)
-'''
+"""
+scrape.py
+By: Gico Carlo Evangelista (RiceAbove)
+
+NOTE:
+This script is made to webscrape the BSOE renumbering and convert that into
+a javascript object literal (or hashtable) used for the course conversion
+DO NOT RUN THIS SCRIPT UNLESS FOR FIXING BUGS OR ADDING FUNCTUALITY. THE CODE
+PROVIDED IS FOR DEMONSTRATION PURPOSES.
+"""
 
 # Write courses at object literal
 def write_js(old, new, desc):
@@ -38,7 +45,7 @@ def end_prompt():
     print('-------------------------------------------------------------------')
     print('End Scrape')
     print('-------------------------------------------------------------------')
-    
+
 # Main function
 def main():
     # f = open('../js/main.js', 'a+')
