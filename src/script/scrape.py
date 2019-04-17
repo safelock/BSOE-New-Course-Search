@@ -14,15 +14,16 @@ PROVIDED IS FOR DEMONSTRATION PURPOSES.
 """
 
 # Write courses at object literal
-def write_js(old, new, desc):
-    pass
+def write_js(f, old, new, desc):
+    f.write('convCourse["{}"] = ["{}","{}"]\n'.format(old, new, desc))
 
 # Scrape BSOE renumbering table
-def scrape():
+def scrape(f):
     try:
         link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaEqu5y2LqKl6BnV4XNwViiTi5p11ltC9zQPLt0Qb6NHVrWKmfqQ5o3wt5StzR0mtjJck3RW1R3T5w/pubhtml?gid=0&amp;single=true&amp;widget=false&amp;headers=false&amp;chrome=false&amp;rm=minimal#s'
         main = requests.get(link).text
         soup = BeautifulSoup(main, "lxml")
+        f.write('cons convCourse = {}\n')
         for courses in soup.find_all("tr"):
             course = courses.find_all('td', class_='s4')
             if len(course) == 3:
@@ -30,7 +31,7 @@ def scrape():
                 new_course = course[1].text
                 desc = course[2].text
                 print('{}   \t{}   \t{}'.format(old_course, new_course, desc))
-                write_js(old_course, new_course, desc)
+                write_js(f, old_course, new_course, desc)
     except Exception as e:
         print('Error while scraping', e)
 
@@ -39,19 +40,21 @@ def start_pompt():
     print('-------------------------------------------------------------------')
     print('Start Scrape')
     print('-------------------------------------------------------------------')
+    return open('../js/main.js', 'w+')
 
 # For testing. Check if script ends
-def end_prompt():
+def end_prompt(f):
     print('-------------------------------------------------------------------')
     print('End Scrape')
     print('-------------------------------------------------------------------')
+    f.close()
 
 # Main function
 def main():
     # f = open('../js/main.js', 'a+')
-    start_pompt()
-    scrape()
-    end_prompt()
+    f = start_pompt()
+    scrape(f)
+    end_prompt(f)
     # f.close()
 
 # Start script
