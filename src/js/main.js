@@ -1,4 +1,4 @@
-cons convCourse = {
+const convCourse = {};
 convCourse["CMPE 3"] = ["CSE 003","Personal Computers"];
 convCourse["CMPE 12"] = ["CSE 012","Com Sys/Assmbly Lan"];
 convCourse["CMPE 12L"] = ["CSE 012L","Comp Sys/Lang Lab"];
