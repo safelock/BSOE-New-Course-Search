@@ -23,7 +23,7 @@ def scrape(f):
         link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaEqu5y2LqKl6BnV4XNwViiTi5p11ltC9zQPLt0Qb6NHVrWKmfqQ5o3wt5StzR0mtjJck3RW1R3T5w/pubhtml?gid=0&amp;single=true&amp;widget=false&amp;headers=false&amp;chrome=false&amp;rm=minimal#s'
         main = requests.get(link).text
         soup = BeautifulSoup(main, "lxml")
-        f.write('cons convCourse = {\n')
+        f.write('cons convCourse = {};')
         for courses in soup.find_all("tr"):
             course = courses.find_all('td', class_='s4')
             if len(course) == 3:
