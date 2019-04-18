@@ -201,7 +201,7 @@ convCourse["TIM 260"] = ["CSE 272","Information Retrieval"];
 convCourse["TIM 275"] = ["Moving to ECE 275","Tech Management"];
 convCourse["TIM 280M"] = ["CSE 280K","Sales and Marketing"];
 
-// Convert old course
+// Convert old course to the new one with description
 function onSubmit(e) {
   e.preventDefault();
   var upperNew = `${courseInput.value}`.toString().toUpperCase();
