@@ -7,10 +7,9 @@ scrape.py
 By: Gico Carlo Evangelista (RiceAbove)
 
 NOTE:
-This script is made to webscrape the BSOE renumbering and convert that into
+This script is made to webscrape the BSOE renumbering table and convert that into
 a javascript object literal (or hashtable) used for the course conversion
-DO NOT RUN THIS SCRIPT UNLESS FOR FIXING BUGS OR ADDING FUNCTUALITY. THE CODE
-PROVIDED IS FOR DEMONSTRATION PURPOSES.
+DO NOT RUN THIS SCRIPT UNLESS FOR FIXING BUGS OR ADDING FUNCTUALITY.
 """
 
 # Write courses at object literal
