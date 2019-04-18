@@ -1,3 +1,11 @@
+// Global variables
+var courseInput = document.querySelector('#course');
+var newCourse = document.querySelector('#new-course');
+var description = document.querySelector('#desc');
+const myForm = document.querySelector('#my-form');
+const msg = document.querySelector('.msg');
+
+// HashTable of all of the courses
 const convCourse = {};
 convCourse["CMPE 3"] = ["CSE 003","Personal Computers"];
 convCourse["CMPE 12"] = ["CSE 012","Com Sys/Assmbly Lan"];
@@ -192,3 +200,21 @@ convCourse["TIM 251"] = ["CSE 249","Lrg-Scale Web Analyt"];
 convCourse["TIM 260"] = ["CSE 272","Information Retrieval"];
 convCourse["TIM 275"] = ["Moving to ECE 275","Tech Management"];
 convCourse["TIM 280M"] = ["CSE 280K","Sales and Marketing"];
+
+// Convert old course
+function onSubmit(e) {
+  e.preventDefault();
+  var upperNew = `${courseInput.value}`.toString().toUpperCase();
+  var convert = convCourse[upperNew][0];
+  var desc = convCourse[upperNew][1];
+  newCourse.textContent = convert;
+  description.textContent = desc;
+}
+
+// Where the magic begins
+function main(){
+  myForm.addEventListener('submit', onSubmit);
+}
+
+// Calls main()
+main();
