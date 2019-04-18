@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>BSOE New Course Search</title>
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <header>
-      <h1>BSOE New Course Search</h1>
+      <h3>BSOE New Course Search</h3>
     </header>
 
     <div class="msg">
@@ -21,7 +22,7 @@
         new courses without having to comb through
         <a href="https://undergrad.soe.ucsc.edu/bsoe-course-renumbering"
         target="_blank">
-          this</a>.
+          this table</a>.
         This is still a work in progress so if you notice anything wrong
         or weird happening, please contact
         <a href="mailto:gnevange@ucsc.edu">me</a> or if you're familiar with
@@ -33,28 +34,26 @@
 
     <section class="container">
       <form id="my-form">
+        <div class="msg"></div>
         <div>
           <input type="text" id="course" placeholder="Old Course">
         </div>
         <input class="btn" type="submit" value="Convert">
-        <div class="new-course">
-          <h1>New Course</h1>
-          <h3>Description</h3>
+        <div class="new-course-full">
+          <h1 id="new-course">New Course</h1>
+          <h3 id="desc">Description</h3>
         </div>
       </form>
     </section>
 
     <footer>
-    		<ul class="icons">
-    			<li><a href="https://www.linkedin.com/in/gico/"
-            class="icon alt fa-linkedin" target="_blank">
-            <span class="label">LinkedIn</span></a></li>
-    			<li><a href="https://github.com/RiceAbove" class="icon alt fa-github"
-            target="_blank"><span class="label">GitHub</span></a></li>
-    		</ul>
-    		<ul class="copyright">
-    			<li>&copy; 2019, Gico Carlo Evangelista</li>
-    		</ul>
+      <div class="github">
+        <a href="https://github.com/RiceAbove/BSOE-New-Course-Search" class="fab fa-github fa-3x"
+            target="_blank"></a>
+      </div>
+    		<p>&copy; 2019, Gico Carlo Evangelista</p>
     </footer>
+
+    <script type="text/javascript" src="src/js/main.js"></script>
   </body>
 </html>

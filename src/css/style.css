@@ -12,17 +12,21 @@ body{
 header {
   background: #003c6c;
   padding: 1rem;
-  text-align: center;
   color: #f4f4f4;
+  box-shadow: 10px 0px 10px #888888;
 }
 
-.msg{
-  margin: auto;
+.msg p{
+  margin: 2rem 4rem;
   overflow: auto;
   width: auto;
   text-align: center;
-  padding: 3rem 5rem 0rem 5rem;
+  padding: 1rem;
   line-height: 1.5rem;
+  /* border-style: solid; */
+  background-color: #13a5dc;
+  box-shadow: 1px 1px 3px #888888;
+  /* color: #f4f4f4; */
 }
 
 .container {
@@ -51,16 +55,17 @@ header {
   border: 1px solid #ccc;
 }
 
-.new-course {
+.new-course-full {
   margin: auto;
   margin-top: 1rem;
   background: #fdc700;
   text-align: center;
   color: #003c6c;
   padding: 1rem;
+  box-shadow: 1px 1px 5px #888888;
 }
 
-.new-course h1{
+.new-course-full h1{
   padding-bottom: 10px;
 }
 
@@ -91,12 +96,16 @@ header {
   margin: 5px;
 }
 
-footer {
+footer{
   padding: 1rem;
   text-align: center;
   color: #595959;
+  display: inline;
+  list-style-type: none;
 }
 
-footer ul{
-  list-style-type: none;
+.github {
+  padding-bottom: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
 }
