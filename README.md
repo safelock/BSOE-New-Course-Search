@@ -1,8 +1,8 @@
 # 🍌[BSOE New Course Search](https://gicocarlo.me/BSOE-New-Course-Search/)🐌
-A website to help fellow slugs quickly find the new BSOE new courses 
+A website to help fellow banana slugs quickly find new BSOE courses 
 
 ## About
-Starting Fall 2019, many BSOE Courses will have changed course numbers and codes. I wanted to make a website that will help UC Santa Cruz students quickly find the courses they need to take. Just simply type in the old course code (e.g. CMPS 101) and it will return the new code (e.g. CSE 101) with the decription of the class.
+Starting Fall 2019, many BSOE (Baskin School Of Engineering) courses at UC Santa Cruz will have changed course numbers and codes. I wanted to make a website that will help students quickly find the courses they need to take. Just simply type in the old course code (e.g. CMPS 101) and it will return the new code (e.g. CSE 101) with the decription of the class.
 
 ## Made With
 - HTML5, CSS3, Javascript
