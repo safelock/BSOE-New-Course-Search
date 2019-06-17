@@ -13,12 +13,24 @@ DO NOT RUN THIS SCRIPT UNLESS FOR FIXING BUGS OR ADDING FUNCTUALITY.
 """
 
 # Write courses at object literal
-def write_js(f, old, new, desc):
-    f.write('convCourse["{}"] = ["{}","{}"];\n'.format(old, new, desc))
+def write_js(f, old, new, desc, type):
+    if type == '!scrape':
+        f.write('convCourse["{}"] = ["{}","{}"];\n'.format(old, new, desc))
+    else:
+        f.write('convCourse["{}"] = ["{}","{}"];\n'.format(new, old, desc))
+
+# For testing. Check if script stars
+def start_scrape():
+    print()
+    print('-------------------------------------------------------------------')
+    print('Start Scrape')
+    print('-------------------------------------------------------------------')
+    return open('../js/main.js', 'a+')
 
 # Scrape BSOE renumbering table
-def scrape(f, link):
+def scrape(link, type):
     try:
+        f = start_scrape()
         main = requests.get(link).text
         soup = BeautifulSoup(main, "lxml")
         f.write('const convCourse = {};\n')
@@ -29,22 +41,17 @@ def scrape(f, link):
                 new_course = course[1].text
                 desc = course[2].text
                 print('{}   \t{}   \t{}'.format(old_course, new_course, desc))
-                write_js(f, old_course, new_course, desc)
+                write_js(f, old_course, new_course, desc, type)
     except Exception as e:
         print('Error while scraping', e)
-
-# For testing. Check if script stars
-def start_scrape():
-    print('-------------------------------------------------------------------')
-    print('Start Scrape')
-    print('-------------------------------------------------------------------')
-    return open('../js/main.js', 'a+')
+    end_scrape(f)
 
 # For testing. Check if script ends
 def end_scrape(f):
     print('-------------------------------------------------------------------')
     print('End Scrape')
     print('-------------------------------------------------------------------')
+    print()
     f.close()
 
 # Check if the website is up
@@ -82,7 +89,6 @@ def start():
 
 # Main function
 def main():
-    # f = open('../js/main.js', 'a+')
     user_input = None
     link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaEqu5y2LqKl6BnV4XNwViiTi5p11ltC9zQPLt0Qb6NHVrWKmfqQ5o3wt5StzR0mtjJck3RW1R3T5w/pubhtml?gid=0&amp;single=true&amp;widget=false&amp;headers=false&amp;chrome=false&amp;rm=minimal#s'
     start()
@@ -92,19 +98,13 @@ def main():
             help()
         elif user_input == '!check':
             check(link)
-        elif user_input == '!scrape':
-            pass
-        elif user_input == '!rev_scrape':
-            pass
+        elif user_input == '!scrape' or user_input == '!rev_scrape':
+            scrape(link, user_input)
         elif user_input == '!exit':
             print('\nExiting scrape.py')
         else:
             print('Invalid command. Try again')
 
-    #f = start_scrape()
-    #scrape(f, link)
-    #end_scrape(f)
-    # f.close()
 
 # Start script
 if __name__ == '__main__':
