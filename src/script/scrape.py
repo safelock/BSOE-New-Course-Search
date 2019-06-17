@@ -35,25 +35,56 @@ def scrape(f):
         print('Error while scraping', e)
 
 # For testing. Check if script stars
-def start_pompt():
+def start_scrape():
     print('-------------------------------------------------------------------')
     print('Start Scrape')
     print('-------------------------------------------------------------------')
     return open('../js/main.js', 'w+')
 
 # For testing. Check if script ends
-def end_prompt(f):
+def end_scrape(f):
     print('-------------------------------------------------------------------')
     print('End Scrape')
     print('-------------------------------------------------------------------')
     f.close()
 
+def help():
+    print()
+    print('*******************************************************************')
+    print('List of commands:')
+    print('*******************************************************************')
+    print('!help      - List all of the commands for scrape.py')
+    print('!check     - Checks the response status code of the table')
+    print('!scrape    - Scrapes BSOE data & adds it to main.js | Old course --> New course')
+    print('!revscrape - Does the same thing as scrape except New course --> Old course')
+    print('!exit      - Exit program')
+    print()
+
+def start():
+    print()
+    print('*******************************************************************')
+    print('scrape.py for BSOE New Course Search')
+    print('Type "!help" for list of commands')
+    print('*******************************************************************')
+    print()
+
 # Main function
 def main():
     # f = open('../js/main.js', 'a+')
-    f = start_pompt()
-    scrape(f)
-    end_prompt(f)
+    user_input = None
+    start()
+    while(user_input != '!exit'):
+        user_input = str(input('> '))
+        if user_input == '!help':
+            help()
+        elif user_input == '!exit':
+            print('\nExiting script')
+        else:
+            print('Invalid command. Try again')
+
+    #f = start_scrape()
+    #scrape(f)
+    #end_scrape(f)
     # f.close()
 
 # Start script
