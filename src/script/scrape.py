@@ -17,9 +17,8 @@ def write_js(f, old, new, desc):
     f.write('convCourse["{}"] = ["{}","{}"];\n'.format(old, new, desc))
 
 # Scrape BSOE renumbering table
-def scrape(f):
+def scrape(f, link):
     try:
-        link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaEqu5y2LqKl6BnV4XNwViiTi5p11ltC9zQPLt0Qb6NHVrWKmfqQ5o3wt5StzR0mtjJck3RW1R3T5w/pubhtml?gid=0&amp;single=true&amp;widget=false&amp;headers=false&amp;chrome=false&amp;rm=minimal#s'
         main = requests.get(link).text
         soup = BeautifulSoup(main, "lxml")
         f.write('const convCourse = {};\n')
@@ -39,7 +38,7 @@ def start_scrape():
     print('-------------------------------------------------------------------')
     print('Start Scrape')
     print('-------------------------------------------------------------------')
-    return open('../js/main.js', 'w+')
+    return open('../js/main.js', 'a+')
 
 # For testing. Check if script ends
 def end_scrape(f):
@@ -48,18 +47,31 @@ def end_scrape(f):
     print('-------------------------------------------------------------------')
     f.close()
 
+# Check if the website is up
+def check(link):
+    check_link = requests.get(link)
+    status_code = check_link.status_code
+    print()
+    print('*******************************************************************')
+    print('Status Code:\t {}'.format(status_code))
+    print('Up & running?:\t {}'.format(status_code == requests.codes.ok))
+    print('*******************************************************************')
+    print()
+
+# Prints available commands
 def help():
     print()
     print('*******************************************************************')
     print('List of commands:')
     print('*******************************************************************')
-    print('!help      - List all of the commands for scrape.py')
-    print('!check     - Checks the response status code of the table')
-    print('!scrape    - Scrapes BSOE data & adds it to main.js | Old course --> New course')
-    print('!revscrape - Does the same thing as scrape except New course --> Old course')
-    print('!exit      - Exit program')
+    print('!help\t    - List all of the commands for scrape.py')
+    print('!check\t    - Checks the response status code of the table')
+    print('!scrape\t    - Scrapes BSOE data & adds it to main.js | Old course --> New course')
+    print('!rev_scrape - Does the same thing as scrape except New course --> Old course')
+    print('!exit\t    - Exit program')
     print()
 
+# Prints successful start of script
 def start():
     print()
     print('*******************************************************************')
@@ -72,18 +84,25 @@ def start():
 def main():
     # f = open('../js/main.js', 'a+')
     user_input = None
+    link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaEqu5y2LqKl6BnV4XNwViiTi5p11ltC9zQPLt0Qb6NHVrWKmfqQ5o3wt5StzR0mtjJck3RW1R3T5w/pubhtml?gid=0&amp;single=true&amp;widget=false&amp;headers=false&amp;chrome=false&amp;rm=minimal#s'
     start()
     while(user_input != '!exit'):
         user_input = str(input('> '))
         if user_input == '!help':
             help()
+        elif user_input == '!check':
+            check(link)
+        elif user_input == '!scrape':
+            pass
+        elif user_input == '!rev_scrape':
+            pass
         elif user_input == '!exit':
-            print('\nExiting script')
+            print('\nExiting scrape.py')
         else:
             print('Invalid command. Try again')
 
     #f = start_scrape()
-    #scrape(f)
+    #scrape(f, link)
     #end_scrape(f)
     # f.close()
 
