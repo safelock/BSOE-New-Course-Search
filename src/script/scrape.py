@@ -54,6 +54,28 @@ def end_scrape(f):
     print()
     f.close()
 
+# Checks how many classes are being webscraped
+def count(link):
+    try:
+        class_count = 0
+        main = requests.get(link).text
+        soup = BeautifulSoup(main, "lxml")
+        print()
+        print('*******************************************************************')
+        print('Counting...')
+        for courses in soup.find_all("tr"):
+            course = courses.find_all('td', class_='s4')
+            if len(course) == 3:
+                class_count += 1
+                new_course = course[1].text
+                print('{}   \t{}'.format(class_count, new_course))
+                print()
+                print('Number of courses: {}'.format(class_count))
+                print('*******************************************************************')
+                print()
+    except Exception as e:
+        print('Error while counting')
+
 # Check if the website is up
 def check(link):
     check_link = requests.get(link)
@@ -75,6 +97,7 @@ def help():
     print('!check\t    - Checks the response status code of the table')
     print('!scrape\t    - Scrapes BSOE data & adds it to main.js | Old course --> New course')
     print('!rev_scrape - Does the same thing as scrape except New course --> Old course')
+    print('!count\t    - Counts how many classes are being scraped')
     print('!exit\t    - Exit program')
     print()
 
@@ -100,6 +123,8 @@ def main():
             check(link)
         elif user_input == '!scrape' or user_input == '!rev_scrape':
             scrape(link, user_input)
+        elif user_input == '!count':
+            count(link)
         elif user_input == '!exit':
             print('\nExiting scrape.py')
         else:
