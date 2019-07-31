@@ -69,10 +69,10 @@ def count(link):
                 class_count += 1
                 new_course = course[1].text
                 print('{}   \t{}'.format(class_count, new_course))
-                print()
-                print('Number of courses: {}'.format(class_count))
-                print('*******************************************************************')
-                print()
+        print()
+        print('Number of courses: {}'.format(class_count))
+        print('*******************************************************************')
+        print()
     except Exception as e:
         print('Error while counting')
 
