@@ -44,6 +44,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CON
 
 ## Contributors 
 - **Gico Carlo Evangelista** - [RiceAbove](https://github.com/RiceAbove), evangelsitagico@gmail.com - Creator 
+- **Randall Lowe** - [safelock](https://github.com/safelock), rlowe527@gmail.com - Contributor
 
 ## Todo Checklist
 - [ ] Improve on the website design

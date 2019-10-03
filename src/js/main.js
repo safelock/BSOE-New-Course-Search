@@ -5,10 +5,94 @@ var description = document.querySelector('#desc');
 const myForm = document.querySelector('#my-form');
 const msg = document.querySelector('.msg');
 
-// HashTable of all of the courses
-const convCourse = {};
 
-// Old --> New
+// Convert old course to the new one with description
+function onSubmit(e) {
+  e.preventDefault();
+  var upperNew = `${courseInput.value}`.toString().toUpperCase();
+  var convert = convCourse[upperNew][0];
+  var desc = convCourse[upperNew][1];
+  newCourse.textContent = convert;
+  description.textContent = desc;
+}
+
+// Where the magic begins
+function main(){
+  myForm.addEventListener('submit', onSubmit);
+}
+
+// Calls main()
+main();
+const convCourse = {};
+// Old to New
+convCourse["AMS 3"] = ["AM 3","Precalculus"];
+convCourse["AMS 5"] = ["STAT 5","Statistics"];
+convCourse["AMS 6"] = ["AM 6","Precalc for Statistics"];
+convCourse["AMS 7"] = ["STAT 7","StatMthdsBio/Env/Hlth"];
+convCourse["AMS 10"] = ["AM 10","Math Methods I"];
+convCourse["AMS 11A"] = ["AM 11A","Math Methd for Econ"];
+convCourse["AMS 11B"] = ["AM 11B","Math Methds Econ II"];
+convCourse["AMS 15A"] = ["AM 15A","Case-StudyCalculus I"];
+convCourse["AMS 15B"] = ["AM 15B","Case-StudyCalculus II"];
+convCourse["AMS 20"] = ["AM 20","Math Methods II"];
+convCourse["AMS 80A"] = ["STAT 80A","Gambling and Gaming"];
+convCourse["AMS 80B"] = ["STAT 80B","Data Visualization"];
+convCourse["AMS 100"] = ["AM 100",""];
+convCourse["AMS 107"] = ["AM 107","IntroFluidDynamics"];
+convCourse["AMS 114"] = ["AM 114","Intro Dynam Systems"];
+convCourse["AMS 115"] = ["AM 115",""];
+convCourse["AMS 129"] = ["AM 129","Foundtns Sci Comput"];
+convCourse["AMS 131"] = ["STAT 131","Intro Prob Theory"];
+convCourse["AMS 132"] = ["STAT 132","Class/BayesianInfer"];
+convCourse["AMS 147"] = ["AM 147","Comp Methods & App"];
+convCourse["AMS 148"] = ["AM 148","GPU Programming"];
+convCourse["AMS 156"] = ["STAT 108","Linear Regression"];
+convCourse["AMS 162"] = ["STAT 162",""];
+convCourse["AMS 174"] = ["STAT 109",""];
+convCourse["AMS 202"] = ["STAT 202","Linear Models in SAS"];
+convCourse["AMS 203"] = ["STAT 203","Intro Prob Theory"];
+convCourse["AMS 204"] = ["STAT 204","Stat Data Analysis"];
+convCourse["AMS 205B"] = ["STAT 205B","Inter Class Inference"];
+convCourse["AMS 206"] = ["STAT 206","Applied Bayesian"];
+convCourse["AMS 206B"] = ["STAT 206B","Inter Bayesian Infer"];
+convCourse["AMS 207"] = ["STAT 207","Intermed Bayes Stat"];
+convCourse["AMS 209"] = ["AM 209","Foundtns Sci Comput"];
+convCourse["AMS 211"] = ["AM 211","Foundatn App Math"];
+convCourse["AMS 212A"] = ["AM 212A","Appld Math Method I"];
+convCourse["AMS 212B"] = ["AM 212B","App Math Methods II"];
+convCourse["AMS 213"] = ["AM 213","Numerical Solutions"];
+convCourse["AMS 213A"] = ["AM 213A","Numerical Linear Alg"];
+convCourse["AMS 213B"] = ["AM 213B","Num Mthds Diff Eq"];
+convCourse["AMS 215"] = ["AM 215","Stochastic Model Biol"];
+convCourse["AMS 216"] = ["AM 216","Stoch Diff Equation"];
+convCourse["AMS 217"] = ["AM 217","Intro Fluid Dynamics"];
+convCourse["AMS 221"] = ["STAT 244","Decision Theory"];
+convCourse["AMS 223"] = ["STAT 223","Time Series Analysis"];
+convCourse["AMS 225"] = ["STAT 225","Multivariate Stat"];
+convCourse["AMS 227"] = ["AM 227","Waves & Instabilities"];
+convCourse["AMS 229"] = ["AM 229","Convex Optimization"];
+convCourse["AMS 230"] = ["AM 230","Numerical Optimiz"];
+convCourse["AMS 231"] = ["AM 231","Nonlinear Control"];
+convCourse["AMS 232"] = ["AM 232","Optimal Control"];
+convCourse["AMS 238"] = ["AM 238","FundUncertQuantificatn"];
+convCourse["AMS 241"] = ["STAT 222","Nonparametric Bayes"];
+convCourse["AMS 245"] = ["STAT 226","Spatial Statistics"];
+convCourse["AMS 250"] = ["AM 250","Intro High Perf Comp"];
+convCourse["AMS 256"] = ["STAT 208","Linear Models"];
+convCourse["AMS 260"] = ["AM 260","Comp Fluid Dynamics"];
+convCourse["AMS 261"] = ["STAT 246","Probability Theory"];
+convCourse["AMS 263"] = ["STAT 243","Stochastic Processes"];
+convCourse["AMS 266A"] = ["STAT 266A","Introduction to R"];
+convCourse["AMS 266B"] = ["STAT 266B","Advanced R"];
+convCourse["AMS 266C"] = ["STAT 266C","Data Wrangling"];
+convCourse["AMS 268"] = ["STAT 229","Adv Bayes Computatn"];
+convCourse["AMS 274"] = ["STAT 209","Gen Linear Models"];
+convCourse["AMS 275"] = ["AM 275","Magnetohydrodynamic"];
+convCourse["AMS 276"] = ["STAT 224","Bayesian Survival"];
+convCourse["AMS 280A"] = ["AM 280A","Math/ComputrBiology"];
+convCourse["AMS 280C"] = ["AM 280C","Seminar in GAFD"];
+convCourse["AMS 280D"] = ["STAT 280D","Sem Bayesian Stats"];
+convCourse["AMS 290A"] = ["AM 280A",""];
 convCourse["CMPE 3"] = ["CSE 003","Personal Computers"];
 convCourse["CMPE 12"] = ["CSE 012","Com Sys/Assmbly Lan"];
 convCourse["CMPE 12L"] = ["CSE 012L","Comp Sys/Lang Lab"];
@@ -202,8 +286,75 @@ convCourse["TIM 251"] = ["CSE 249","Lrg-Scale Web Analyt"];
 convCourse["TIM 260"] = ["CSE 272","Information Retrieval"];
 convCourse["TIM 275"] = ["Moving to ECE 275","Tech Management"];
 convCourse["TIM 280M"] = ["CSE 280K","Sales and Marketing"];
-
-// New --> Old
+// New to Old
+convCourse["AM 3"] = ["AMS 3","Precalculus"];
+convCourse["STAT 5"] = ["AMS 5","Statistics"];
+convCourse["AM 6"] = ["AMS 6","Precalc for Statistics"];
+convCourse["STAT 7"] = ["AMS 7","StatMthdsBio/Env/Hlth"];
+convCourse["AM 10"] = ["AMS 10","Math Methods I"];
+convCourse["AM 11A"] = ["AMS 11A","Math Methd for Econ"];
+convCourse["AM 11B"] = ["AMS 11B","Math Methds Econ II"];
+convCourse["AM 15A"] = ["AMS 15A","Case-StudyCalculus I"];
+convCourse["AM 15B"] = ["AMS 15B","Case-StudyCalculus II"];
+convCourse["AM 20"] = ["AMS 20","Math Methods II"];
+convCourse["STAT 80A"] = ["AMS 80A","Gambling and Gaming"];
+convCourse["STAT 80B"] = ["AMS 80B","Data Visualization"];
+convCourse["AM 100"] = ["AMS 100",""];
+convCourse["AM 107"] = ["AMS 107","IntroFluidDynamics"];
+convCourse["AM 114"] = ["AMS 114","Intro Dynam Systems"];
+convCourse["AM 115"] = ["AMS 115",""];
+convCourse["AM 129"] = ["AMS 129","Foundtns Sci Comput"];
+convCourse["STAT 131"] = ["AMS 131","Intro Prob Theory"];
+convCourse["STAT 132"] = ["AMS 132","Class/BayesianInfer"];
+convCourse["AM 147"] = ["AMS 147","Comp Methods & App"];
+convCourse["AM 148"] = ["AMS 148","GPU Programming"];
+convCourse["STAT 108"] = ["AMS 156","Linear Regression"];
+convCourse["STAT 162"] = ["AMS 162",""];
+convCourse["STAT 109"] = ["AMS 174",""];
+convCourse["STAT 202"] = ["AMS 202","Linear Models in SAS"];
+convCourse["STAT 203"] = ["AMS 203","Intro Prob Theory"];
+convCourse["STAT 204"] = ["AMS 204","Stat Data Analysis"];
+convCourse["STAT 205B"] = ["AMS 205B","Inter Class Inference"];
+convCourse["STAT 206"] = ["AMS 206","Applied Bayesian"];
+convCourse["STAT 206B"] = ["AMS 206B","Inter Bayesian Infer"];
+convCourse["STAT 207"] = ["AMS 207","Intermed Bayes Stat"];
+convCourse["AM 209"] = ["AMS 209","Foundtns Sci Comput"];
+convCourse["AM 211"] = ["AMS 211","Foundatn App Math"];
+convCourse["AM 212A"] = ["AMS 212A","Appld Math Method I"];
+convCourse["AM 212B"] = ["AMS 212B","App Math Methods II"];
+convCourse["AM 213"] = ["AMS 213","Numerical Solutions"];
+convCourse["AM 213A"] = ["AMS 213A","Numerical Linear Alg"];
+convCourse["AM 213B"] = ["AMS 213B","Num Mthds Diff Eq"];
+convCourse["AM 215"] = ["AMS 215","Stochastic Model Biol"];
+convCourse["AM 216"] = ["AMS 216","Stoch Diff Equation"];
+convCourse["AM 217"] = ["AMS 217","Intro Fluid Dynamics"];
+convCourse["STAT 244"] = ["AMS 221","Decision Theory"];
+convCourse["STAT 223"] = ["AMS 223","Time Series Analysis"];
+convCourse["STAT 225"] = ["AMS 225","Multivariate Stat"];
+convCourse["AM 227"] = ["AMS 227","Waves & Instabilities"];
+convCourse["AM 229"] = ["AMS 229","Convex Optimization"];
+convCourse["AM 230"] = ["AMS 230","Numerical Optimiz"];
+convCourse["AM 231"] = ["AMS 231","Nonlinear Control"];
+convCourse["AM 232"] = ["AMS 232","Optimal Control"];
+convCourse["AM 238"] = ["AMS 238","FundUncertQuantificatn"];
+convCourse["STAT 222"] = ["AMS 241","Nonparametric Bayes"];
+convCourse["STAT 226"] = ["AMS 245","Spatial Statistics"];
+convCourse["AM 250"] = ["AMS 250","Intro High Perf Comp"];
+convCourse["STAT 208"] = ["AMS 256","Linear Models"];
+convCourse["AM 260"] = ["AMS 260","Comp Fluid Dynamics"];
+convCourse["STAT 246"] = ["AMS 261","Probability Theory"];
+convCourse["STAT 243"] = ["AMS 263","Stochastic Processes"];
+convCourse["STAT 266A"] = ["AMS 266A","Introduction to R"];
+convCourse["STAT 266B"] = ["AMS 266B","Advanced R"];
+convCourse["STAT 266C"] = ["AMS 266C","Data Wrangling"];
+convCourse["STAT 229"] = ["AMS 268","Adv Bayes Computatn"];
+convCourse["STAT 209"] = ["AMS 274","Gen Linear Models"];
+convCourse["AM 275"] = ["AMS 275","Magnetohydrodynamic"];
+convCourse["STAT 224"] = ["AMS 276","Bayesian Survival"];
+convCourse["AM 280A"] = ["AMS 280A","Math/ComputrBiology"];
+convCourse["AM 280C"] = ["AMS 280C","Seminar in GAFD"];
+convCourse["STAT 280D"] = ["AMS 280D","Sem Bayesian Stats"];
+convCourse["AM 280A"] = ["AMS 290A",""];
 convCourse["CSE 003"] = ["CMPE 3","Personal Computers"];
 convCourse["CSE 012"] = ["CMPE 12","Com Sys/Assmbly Lan"];
 convCourse["CSE 012L"] = ["CMPE 12L","Comp Sys/Lang Lab"];
@@ -391,28 +542,9 @@ convCourse["CSE 276"] = ["TIM 206","Optimization Theory"];
 convCourse["CSE 277"] = ["TIM 207","Random Proc Models"];
 convCourse["CSE 271"] = ["TIM 211","E-Bus Tech/Strategy"];
 convCourse["CSE 270B"] = ["TIM 225","Mgmt of Tech II"];
-convCourse["Moving to CMPM 243"] = ["TIM 243","Social Computing"];
+convCourse["CMPM 243"] = ["Moved from TIM 243","Social Computing"];
 convCourse["CSE 243"] = ["TIM 245","Data Mining"];
 convCourse["CSE 249"] = ["TIM 251","Lrg-Scale Web Analyt"];
 convCourse["CSE 272"] = ["TIM 260","Information Retrieval"];
-convCourse["Moving to ECE 275"] = ["TIM 275","Tech Management"];
+convCourse["ECE 275"] = ["Moved from TIM 275","Tech Management"];
 convCourse["CSE 280K"] = ["TIM 280M","Sales and Marketing"];
-
-
-// Convert old course to the new one with description
-function onSubmit(e) {
-  e.preventDefault();
-  var upperNew = `${courseInput.value}`.toString().toUpperCase();
-  var convert = convCourse[upperNew][0];
-  var desc = convCourse[upperNew][1];
-  newCourse.textContent = convert;
-  description.textContent = desc;
-}
-
-// Where the magic begins
-function main(){
-  myForm.addEventListener('submit', onSubmit);
-}
-
-// Calls main()
-main();
