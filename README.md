@@ -48,6 +48,6 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CON
 
 ## Todo Checklist
 - [x] Add AMS courses 
-- [ ] Add EE courses
+- [x] Add EE courses
 - [x] Convert new courses ➡️ old courses
 - [ ] Improve on the website design
