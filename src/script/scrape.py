@@ -1,4 +1,5 @@
 import os
+import re
 import requests
 from bs4 import BeautifulSoup
 
@@ -36,10 +37,19 @@ def scrape(link, type):
         f.write('const convCourse = {};\n')
         for courses in soup.find_all("tr"):
             course = courses.find_all('td', class_='s4')
+            course2 = courses.find_all('td', class_='s1')
             if len(course) == 3:
                 old_course = course[0].text
                 new_course = course[1].text
                 desc = course[2].text
+                print('{}   \t{}   \t{}'.format(old_course, new_course, desc))
+                write_js(f, old_course, new_course, desc, type)
+            if len(course2) >= 3:
+                old_course = course2[0].text
+                old_course = re.sub(' 0+', ' ', old_course)       
+                new_course = course2[1].text
+                new_course = re.sub(' 0+', ' ', new_course)
+                desc = course2[2].text
                 print('{}   \t{}   \t{}'.format(old_course, new_course, desc))
                 write_js(f, old_course, new_course, desc, type)
     except Exception as e:
