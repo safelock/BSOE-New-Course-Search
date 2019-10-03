@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 import requests
 from bs4 import BeautifulSoup
 
@@ -34,15 +35,17 @@ def scrape(link, type):
         f = start_scrape()
         main = requests.get(link).text
         soup = BeautifulSoup(main, "lxml")
-        f.write('const convCourse = {};\n')
         for courses in soup.find_all("tr"):
             course = courses.find_all('td', class_=re.compile("s[14]"))
             if len(course) >= 3:
                 old_course = course[0].text
-                old_course = re.sub(' 0+', ' ', old_course) 
+                old_course = re.sub(' 0+', ' ', old_course)
                 new_course = course[1].text
                 new_course = re.sub(' 0+', ' ', new_course)
                 desc = course[2].text
+                if "Moving to " in new_course and type != "!scrape":
+                    new_course = re.sub('Moving to ', "", new_course)
+                    old_course = "Moved from " + old_course
                 print('{}   \t{}   \t{}'.format(old_course, new_course, desc))
                 write_js(f, old_course, new_course, desc, type)
     except Exception as e:
@@ -112,6 +115,10 @@ def start():
     print('Type "!help" for list of commands')
     print('*******************************************************************')
     print()
+    try: 
+        shutil.copy('../js/main-blank.js','../js/main.js')
+    except Exception as e:
+            print("Error while creating template file.", e)
 
 # Main function
 def main():
