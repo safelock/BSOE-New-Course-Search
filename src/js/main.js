@@ -805,4 +805,3 @@ convCourse["CSE 249"] = ["TIM 251","Lrg-Scale Web Analyt"];
 convCourse["CSE 272"] = ["TIM 260","Information Retrieval"];
 convCourse["ECE 275"] = ["Moved from TIM 275","Tech Management"];
 convCourse["CSE 280I"] = ["TIM 280I","Info Retrievl/Knowl Mgnt"];
-convCourse["CSE 280K"] = ["TIM 280M","Sales and Marketing"];

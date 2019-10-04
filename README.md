@@ -47,6 +47,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CON
 - **Randall Lowe** - [safelock](https://github.com/safelock), rlowe527@gmail.com - Contributor
 
 ## Todo Checklist
-- [ ] Improve on the website design
-- [ ] Add AMS & EE courses
+- [x] Add AMS courses 
+- [x] Add EE courses
 - [x] Convert new courses ➡️ old courses
+- [ ] Improve on the website design
